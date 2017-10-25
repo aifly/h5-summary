@@ -1,0 +1,328 @@
+﻿@import './base.scss';
+
+html, body, div, p, ul, li, ol, dl, dt, dd, header, footer, video, h1, h2, h3, h4, canvas, section, figure {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+html, body {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Helvetica Neue", 'Helvetica', "Microsoft YaHei", '微软雅黑', arial, sans-serif;
+  overflow-x: hidden;
+  font-size: 14px;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}
+
+.clearfix {
+  clear: both;
+}
+
+input, textarea {
+  outline: none;
+}
+
+$viewW: 10rem;
+
+.zmiti-loading {
+  background: #8e101c;
+  color: #f2eb80;
+  z-index: 1100;
+
+  .zmiti-loading-bar {
+    width: 7rem;
+    @include pos(a);
+    top: 48%;
+    left: 1.5rem;
+    height: 4px;
+    @include br(2px);
+    border: 1px solid #f2eb80;
+    padding: 1px;
+
+    span {
+      @include pos(a);
+      width: 0;
+      height: 4px;
+      background: #f2eb80;
+      @include br(1px);
+    }
+
+    label {
+      @include pos(r);
+      top: -20px;
+      left: 0;
+
+      .dang {
+        width: 1rem;
+        display: block;
+        @include pos(r);
+        top: -10px;
+      }
+
+    }
+
+  }
+
+}
+
+.zmiti-main-ui {
+  height: 100%;
+  @include pos(f);
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 201;
+
+  .zmiti-content-page {
+    @include displayBox(vertical);
+
+    .zmiti-aside1 {
+      -webkit-box-flex: 1;
+      @include pos(r);
+      width: $viewW;
+      overflow: hidden;
+
+      .zmiti-bg {
+        @include transition(background .2s);
+      }
+
+      .zmiti-title-C {
+        @include pos(a);
+        width: $viewW;
+        height: 2rem;
+        bottom: .5rem;
+        color: #b40012;
+        font-size: .5rem;
+        font-weight: bold;
+        text-align: center;
+
+        &>div {
+          @include pos(a);
+          bottom: 0;
+          left: 50%;
+          z-index: 100;
+          @include transform(translate3d(-50%, 0, 0));
+          opacity: 0;
+          @include transition(.5s);
+          width: 100%;
+
+          &.active {
+            opacity: 1;
+          }
+
+        }
+
+      }
+
+      @include transform3d(500px);
+
+      ul {
+        width: $viewW;
+        @include pos(a);
+        height: 100%;
+
+        &:before {
+          content: '';
+          @include pos(a);
+          width: $viewW*1.5;
+          height: 50%;
+          left: 50%;
+          margin-left: -$viewW*.75;
+          bottom: -3rem;
+          background: #fefddf;
+          @include br();
+          z-index: 0;
+          @include transform(rotateX(32deg));
+        }
+
+        li {
+          div {
+            @include pos(a);
+            left: 0;
+            top: 0;
+          }
+
+          &.zmiti-page-item {
+            @include transition_transform(.4s);
+          }
+
+          .zmiti-img-C {
+            @include pos(a);
+            width: 6rem;
+            left: 50%;
+            top: 10%;
+            margin-left: -3rem;
+            @include transform3d();
+
+            &:after {
+              content: '';
+              width: 100%;
+              height: .6rem;
+              @include br();
+              @include pos(a);
+              left: 0;
+              bottom: -1.5rem;
+              background: rgba(0, 0, 0, .3);
+              -webkit-filter: blur(10px);
+            }
+
+            &:before {
+              content: '';
+              @include pos(a);
+              width: 100%;
+              height: 100%;
+              left: 0;
+              top: 0;
+              box-shadow: 0 0 0 8px #f2eb80;
+            }
+
+          }
+
+          &.left {
+            //@include transform(scale(.7) translate3d(-$viewW/1.5, 0, 0));
+            @include transform(translate3d(-5.66667rem, 0, 0) rotateY(90deg));
+          }
+
+          &.transition {
+            @include transition_transform(.4s);
+          }
+
+          &.left1 {
+            @include transition_transform(.4s);
+            //@include transform(scale(.7) translate3d(-5.66667rem, 0, 0));
+            @include transform(translate3d(-$viewW, 0, 0) rotateY(90deg));
+          }
+
+          &.right {
+            @include transform(translate3d(5.66667rem, 0, 0) rotateY(-90deg));
+          }
+
+          &.right1 {
+            // @include transition_transform(.4s .22s);
+            @include transform(translate3d($viewW, 0, 0) rotateY(-90deg));
+          }
+
+          &.active {
+            @include transform(rotateY(0) translate3d(0, 0, 1px));
+            z-index: 100;
+          }
+
+        }
+
+      }
+
+    }
+
+    .zmiti-aside2 {
+      $height: 1.5rem;
+      border-top: 1px solid #ccc;
+      height: $height;
+      line-height: $height;
+      width: $viewW;
+      @include displayBox(horizontal);
+
+      &>div {
+        color: #f2eb80;
+        @include pos(r);
+
+        &:after {
+          content: '';
+          @include pos(a);
+          left: 0;
+          top: 0;
+          background: #363434;
+          width: 100%;
+          height: 100%;
+          opacity: .5;
+        }
+
+        &:nth-of-type(1) {
+          img {
+            height: 30px;
+            width: auto;
+          }
+
+        }
+
+        &.active {
+          &:after {
+            display: none;
+          }
+
+        }
+
+        img {
+          margin-right: 10px;
+        }
+
+        &:nth-of-type(2) {
+          img {
+            width: 1rem;
+          }
+
+        }
+
+        background: #8e101c;
+        -webkit-box-flex: 1;
+        text-align: center;
+      }
+
+    }
+
+  }
+
+  .zmiti-result-page {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    .zmiti-back {
+      @include pos(f);
+      width: 3rem;
+      height: 1rem;
+      line-height: 1rem;
+      background: rgba(0, 0, 0, .8);
+      color: #fff;
+      right: 0;
+      overflow: scroll;
+      bottom: 0;
+      text-align: center;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+  }
+
+}
+
+.zmiti-mask {
+  @include pos(a);
+  width: 100%;
+  display: none;
+  height: 100%;
+  background: rgba(0, 0, 0, .9);
+  left: 0;
+  top: 0;
+  z-index: 5800;
+}

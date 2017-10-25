@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no,email=no" />
+	<link rel="stylesheet" type="text/css" href="./assets/css/index.css">
+	<script>
+		document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth / 10 + 'px'
+	</script>
+	<title></title>
+</head>
+<body>
+	<div class="lt-full zmiti-loading" id="zmiti-loading">
+		<div class='zmiti-loading-bar'>
+			<span></span>
+			<label>
+				<img class="dang" src='./assets/images/dang.png'/>
+				<i>0%</i>
+			</label>
+		</div>
+	</div>
+	<div class="zmiti-main-ui" id="zmiti-main-ui">
+		<div class="zmiti-index-page">
+			
+		</div>
+		<div class="zmiti-content-page lt-full">
+			<div class="zmiti-aside1">
+				<div class="zmiti-bg lt-full" v-bind:style="{background:'url('+pageList[currentIndex].bg+') no-repeat center / cover'}">
+					
+				</div>
+				<ul class="zmiti-subject-list"  id="zmiti-subject-list" >
+					<li :class="currentIndex === index ? 'active zmiti-page-item':currentIndex > index ? currentIndex > index+1 ? isTransition?'zmiti-page-item left1':'left1':isTransition?'zmiti-page-item left':'left':currentIndex<index-1?isTransition?'zmiti-page-item right1':'right1':isTransition?'zmiti-page-item right':'right'"
+					class="lt-full" v-for='(subject,index) in pageList' @click='currentHref=subject.href' >
+						<div class="zmiti-img-C"><img draggable='false' v-bind:src='subject.img'/></div>
+
+					</li>
+				</ul>
+				<div class="zmiti-title-C">
+					<div v-for='(subject,index) in pageList' :class="index === currentIndex?'active':''">{{subject.title}}</div>
+				</div>
+			</div>
+			<div class="zmiti-aside2">
+				<div :class="activeTab === 'h5List' ? 'active' : '' " @click='changeToScene("h5List")'>
+					<img src='./assets/images/h5.png'/>H5
+				</div>
+				<div :class="activeTab === 'videoList' ? 'active' : '' " @click='changeToScene("videoList")'>
+					<img src="./assets/images/video.png" />
+					视频
+				</div>
+			</div>
+		</div>
+		<div v-if='currentHref' class="zmiti-result-page lt-full">
+			<iframe  :src='currentHref' frameborder="0"></iframe>
+			<div class="zmiti-back" @click='currentHref=""'><div>返回</div></div>
+		</div>
+	</div>
+
+	<script src='http://res.wx.qq.com/open/js/jweixin-1.2.0.js'></script> 
+	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+	<script src="./assets/js/touch.js"></script>
+	<script src='./assets/js/index.js'></script>
+</body>
+</html>
