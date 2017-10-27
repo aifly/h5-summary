@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+	<meta id="meta" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
 	<meta name="format-detection" content="telephone=no,email=no" />
 	<link rel="stylesheet" type="text/css" href="./assets/css/index.css">
 	<script>
 		document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth / 10 + 'px'
 	</script>
-	<title></title>
+	<title>新华社十九大创新产品巡展</title>
 </head>
 <body>
-	<div class="lt-full zmiti-loading" id="zmiti-loading">
+	<div class="lt-full zmiti-loading" style="display: none;" id="zmiti-loading">
 		<div class='zmiti-loading-bar'>
 			<span></span>
 			<label>
@@ -21,8 +21,29 @@
 		</div>
 	</div>
 	<div class="zmiti-main-ui" id="zmiti-main-ui">
-		<div class="zmiti-index-page">
-			
+		<div class="zmiti-index-page lt-full"  v-if='showIndex' :class='indexPageClass'>
+			<div class="zmiti-index-top">
+				<img src="./assets/images/top.png">
+			</div>
+			<div class="zmiti-dang">
+				<img src="./assets/images/dang.png">
+			</div>
+			<div class="zmiti-index-title">
+				<img src="./assets/images/title.png">
+			</div>
+			<div class="zmiti-index-bottom">
+				<img src="./assets/images/bottom.png">
+			</div>
+			<div class="zmiti-index-text">
+				十九大期间，新华社制作、发布了大量包括微视频、H5轻应用、全景等不同形态的融媒体报道产品，这些产品“可分享、强互动，重体验”，为受众了解此次党代会提供了全新模式。
+			</div>
+			<div class="zmiti-index-copyright">
+				<img src="./assets/images/copyright.png">
+			</div>
+
+			<div class="zmiti-index-btn" @click='showIndex=false'>
+				进入
+			</div>
 		</div>
 		<div class="zmiti-content-page lt-full">
 			<div class="zmiti-aside1">
@@ -30,12 +51,26 @@
 					
 				</div>
 				<ul class="zmiti-subject-list"  id="zmiti-subject-list" >
-					<li :class="currentIndex === index ? 'active zmiti-page-item':currentIndex > index ? currentIndex > index+1 ? isTransition?'zmiti-page-item left1':'left1':isTransition?'zmiti-page-item left':'left':currentIndex<index-1?isTransition?'zmiti-page-item right1':'right1':isTransition?'zmiti-page-item right':'right'"
-					class="lt-full" v-for='(subject,index) in pageList' @click='currentHref=subject.href' >
-						<div class="zmiti-img-C"><img draggable='false' v-bind:src='subject.img'/></div>
-
+					<li :class="subject.className"
+					class="lt-full" v-for='(subject,index) in pageList' @click='entryDetail(subject)' >
+						<div class="zmiti-img-C">
+							<img draggable='false' v-bind:src='subject.img'/>
+							<div class="zmiti-btn-list">
+								<section v-if='subject.hrefs.length>0' class="zmiti-btn-title">视频系列</section>
+								<div v-for='(href,i) in subject.hrefs'>
+									<div @click.stop='currentHref = href'>{{textArr[i]}}</div>
+								</div>
+							</div>
+						</div>
+						
 					</li>
 				</ul>
+				<div :class='showCurtain?"active":"" ' class="zmiti-curtain zmiti-curtain1">
+					<img v-bind:src="activeTab === 'h5List'?'./assets/images/ico-h5-1.png':'./assets/images/ico-video-1.png'" />
+				</div>
+				<div :class='showCurtain?"active":"" ' class="zmiti-curtain zmiti-curtain2">
+					<img v-bind:src="activeTab === 'h5List'?'./assets/images/ico-h5-2.png':'./assets/images/ico-video-2.png'" />
+				</div>
 				<div class="zmiti-title-C">
 					<div v-for='(subject,index) in pageList' :class="index === currentIndex?'active':''">{{subject.title}}</div>
 				</div>
@@ -52,7 +87,7 @@
 		</div>
 		<div v-if='currentHref' class="zmiti-result-page lt-full">
 			<iframe  :src='currentHref' frameborder="0"></iframe>
-			<div class="zmiti-back" @click='currentHref=""'><div>返回</div></div>
+			<div class="zmiti-back" @click='back()'><div><img src='./assets/images/back.png'/></div></div>
 		</div>
 	</div>
 
@@ -61,6 +96,17 @@
 	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 	<script src="./assets/js/touch.js"></script>
-	<script src='./assets/js/index.js'></script>
+	<script>
+		function loadScript(src){
+			 var script = document.createElement('script');
+			 script.src = src+'?t='+new Date().getTime()
+			 document.body.appendChild(script)
+		}
+
+		loadScript('./assets/js/index.js')
+
+
+	</script>
+
 </body>
 </html>

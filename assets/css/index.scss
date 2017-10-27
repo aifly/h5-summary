@@ -73,7 +73,7 @@ $viewW: 10rem;
         width: 1rem;
         display: block;
         @include pos(r);
-        top: -10px;
+        top: -.4rem;
       }
 
     }
@@ -81,6 +81,8 @@ $viewW: 10rem;
   }
 
 }
+
+$color: #b72d2b;
 
 .zmiti-main-ui {
   height: 100%;
@@ -90,6 +92,162 @@ $viewW: 10rem;
   width: 100%;
   z-index: 201;
 
+  .zmiti-index-page {
+    background: $color;
+    z-index: 10000;
+
+    &.active {
+      .zmiti-dang {
+        @include transform(scale(1));
+      }
+
+      .zmiti-index-title {
+        opacity: 1;
+        @include transform(translate3d(0, 0, 0));
+      }
+
+      .zmiti-index-bottom {
+        opacity: 1;
+        @include transform(translate3d(0, 0, 0));
+      }
+
+      .zmiti-index-text {
+        opacity: 1;
+      }
+
+      .zmiti-index-copyright {
+        opacity: 1;
+      }
+
+      .zmiti-index-btn {
+        opacity: 1;
+        @include transform3d();
+
+        &:after {
+          content: '';
+          @include pos(a);
+          width: 100%;
+          opacity: 1;
+          z-index: -1;
+          @include transition(opacity .2s 2s);
+          height: 100%;
+          background: rgba(0, 0, 0, .56);
+          left: 0;
+          bottom: -3px;
+          @include br(.3rem);
+          @include transform(translate3d(0, 0, -2px));
+        }
+
+      }
+
+    }
+
+    .zmiti-index-top {
+      @include pos(a);
+      left: 0;
+      top: 0;
+    }
+
+    .zmiti-dang {
+      width: 3rem;
+      @include pos(a);
+      left: 3.5rem;
+      top: 1rem;
+      @include transform(scale(0));
+      @include transition_transform(.5s);
+    }
+
+    .zmiti-index-title {
+      @include pos(a);
+      width: 8rem;
+      left: 1rem;
+      top: 4rem;
+      opacity: 0;
+      @include transition(.55s .5s);
+      @include transform(translate3d(0, 1rem, 0));
+    }
+
+    .zmiti-index-bottom {
+      @include pos(a);
+      left: 0;
+      bottom: -1rem;
+      opacity: 0;
+      @include transition(.55s .5s);
+      @include transform(translate3d(0, 1rem, 0));
+    }
+
+    .zmiti-index-text {
+      @include pos(a);
+      width: 8rem;
+      left: 1rem;
+      bottom: 2.5rem;
+      color: $color;
+      text-indent: 2em;
+      font-size: 13px;
+      line-height: .6rem;
+      opacity: 0;
+      @include transition(opacity 1s 1s);
+    }
+
+    .zmiti-index-copyright {
+      @include pos(a);
+      z-index: 10;
+      bottom: .5rem;
+      width: 5rem;
+      left: 2.5rem;
+      opacity: 0;
+      @include transition(opacity 1s 1s);
+    }
+
+    .zmiti-index-btn {
+      @include transform3d();
+      width: 3rem;
+      height: 1rem;
+      line-height: 1rem;
+      text-align: center;
+      color: #fff;
+      font-size: .5rem;
+      background: $color;
+      @include pos(a);
+      left: 3.5rem;
+      bottom: 1.5rem;
+      z-index: 10;
+      @include br(.3rem);
+      opacity: 0;
+      @include transition(opacity 1s 1s);
+      @include animation(scale 1s linear infinite alternate);
+
+      &:after {
+        content: '';
+        @include pos(a);
+        width: 100%;
+        opacity: 0;
+        z-index: -1;
+        height: 100%;
+        background: rgba(0, 0, 0, .56);
+        left: 0;
+        bottom: -3px;
+        @include br(.3rem);
+        @include transform(translate3d(0, 0, -2px));
+      }
+
+    }
+
+  }
+
+  @-webkit-keyframes scale {
+    0% {
+      -webkit-transform: scale(.97);
+      transform: scale(.97)
+    }
+
+    to {
+      -webkit-transform: scale(1.03);
+      transform: scale(1.03)
+    }
+
+  }
+
   .zmiti-content-page {
     @include displayBox(vertical);
 
@@ -98,6 +256,7 @@ $viewW: 10rem;
       @include pos(r);
       width: $viewW;
       overflow: hidden;
+      background: #000;
 
       .zmiti-bg {
         @include transition(background .2s);
@@ -121,7 +280,7 @@ $viewW: 10rem;
           @include transform(translate3d(-50%, 0, 0));
           opacity: 0;
           @include transition(.5s);
-          width: 100%;
+          width: 80%;
 
           &.active {
             opacity: 1;
@@ -137,6 +296,7 @@ $viewW: 10rem;
         width: $viewW;
         @include pos(a);
         height: 100%;
+        z-index: 1;
 
         &:before {
           content: '';
@@ -149,7 +309,7 @@ $viewW: 10rem;
           background: #fefddf;
           @include br();
           z-index: 0;
-          @include transform(rotateX(32deg));
+          //
         }
 
         li {
@@ -161,6 +321,50 @@ $viewW: 10rem;
 
           &.zmiti-page-item {
             @include transition_transform(.4s);
+          }
+
+          .zmiti-btn-list {
+            width: 90%;
+            $size: .8rem;
+            height: $size;
+            @include pos(a);
+            left: 5%;
+            bottom: .2rem;
+            top: auto;
+            @include displayBox(horizontal);
+
+            .zmiti-btn-title {
+              width: 100%;
+              text-align: center;
+              @include pos(a);
+              top: -75%;
+              color: $color;
+            }
+
+            &>div {
+              -webkit-box-flex: 1;
+              background: $color;
+              @include br(4px);
+              @include pos(r);
+              line-height: $size;
+              height: $size;
+
+              &:nth-of-type(2) {
+                margin: 0 10px;
+              }
+
+              &:nth-of-type(3) {
+                margin-right: 10px;
+              }
+
+              &>div {
+                text-align: center;
+                width: 100%;
+                color: #f2eb80;
+              }
+
+            }
+
           }
 
           .zmiti-img-C {
@@ -196,6 +400,7 @@ $viewW: 10rem;
           }
 
           &.left {
+            opacity: 1;
             //@include transform(scale(.7) translate3d(-$viewW/1.5, 0, 0));
             @include transform(translate3d(-5.66667rem, 0, 0) rotateY(90deg));
           }
@@ -205,25 +410,61 @@ $viewW: 10rem;
           }
 
           &.left1 {
-            @include transition_transform(.4s);
+            opacity: 0;
+            //@include transition_transform(.4s);
             //@include transform(scale(.7) translate3d(-5.66667rem, 0, 0));
             @include transform(translate3d(-$viewW, 0, 0) rotateY(90deg));
           }
 
           &.right {
+            opacity: 1;
             @include transform(translate3d(5.66667rem, 0, 0) rotateY(-90deg));
           }
 
           &.right1 {
+            opacity: 0;
             // @include transition_transform(.4s .22s);
             @include transform(translate3d($viewW, 0, 0) rotateY(-90deg));
           }
 
           &.active {
-            @include transform(rotateY(0) translate3d(0, 0, 1px));
+            @include transform(rotateY(0));
             z-index: 100;
           }
 
+        }
+
+      }
+
+      .zmiti-curtain {
+        @include pos(a);
+        width: 50%;
+        height: 120%;
+        background-size: cover;
+        z-index: 1000;
+        left: 0;
+        background: $color;
+        @include transition(.5s);
+      }
+
+      .zmiti-curtain1 {
+        @include transform(translate3d(-$viewW/1.5, 0, 0));
+
+        &.active {
+          left: 0;
+          @include transform(translate3d(0, 0, 0));
+        }
+
+      }
+
+      .zmiti-curtain2 {
+        right: 0;
+        left: auto;
+        @include transform(translate3d($viewW/1.5, 0, 0));
+
+        &.active {
+          right: 0;
+          @include transform(translate3d(0, 0, 0));
         }
 
       }
@@ -232,7 +473,6 @@ $viewW: 10rem;
 
     .zmiti-aside2 {
       $height: 1.5rem;
-      border-top: 1px solid #ccc;
       height: $height;
       line-height: $height;
       width: $viewW;
@@ -280,7 +520,7 @@ $viewW: 10rem;
         }
 
         background: #8e101c;
-        -webkit-box-flex: 1;
+        width: 5rem;
         text-align: center;
       }
 
@@ -295,18 +535,15 @@ $viewW: 10rem;
     iframe {
       width: 100%;
       height: 100%;
+      background: #fff;
     }
 
     .zmiti-back {
       @include pos(f);
-      width: 3rem;
-      height: 1rem;
-      line-height: 1rem;
-      background: rgba(0, 0, 0, .8);
-      color: #fff;
-      right: 0;
-      overflow: scroll;
-      bottom: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      right: .4rem;
+      bottom: 1rem;
       text-align: center;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
@@ -325,4 +562,17 @@ $viewW: 10rem;
   left: 0;
   top: 0;
   z-index: 5800;
+}
+
+@media all and (min-height:603px) and (min-width:375px) {
+  .zmiti-main-ui {
+    .zmiti-index-page {
+      .zmiti-index-text {
+        bottom: 2.9rem;
+      }
+
+    }
+
+  }
+
 }

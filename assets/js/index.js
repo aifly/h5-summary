@@ -4,7 +4,7 @@
 
 
 
-var worksid = '1275459017'; //新华社的作品
+var worksid = '1907384290'; //新华社的作品
 
 var data = { //新华社的公众号信息
 	wxappid: 'wx5ec3d35069383211',
@@ -13,8 +13,9 @@ var data = { //新华社的公众号信息
 
 var shareUrl = 'http://h5.zhongguowangshi.com/letter/assets/images/300.jpg';
 shareUrl = 'http://h5.zmiti.com/public/letter/assets/images/300.jpg';
-
+window.h5name = 'h5-summary1'
 var zmitiUtil = {
+
 	h5List: [
 
 		{ //1
@@ -23,42 +24,81 @@ var zmitiUtil = {
 			from: '新华网 产品研究院',
 			img: './assets/images/h5-1.jpg',
 			title: '点赞十九大 中国强起来',
-			href: 'http://newdata.news.cn/dzsjd/#0'
+			href: 'http://newdata.news.cn/dzsjd/#0',
+			hrefs: []
 		}, { //2
-			bg: './assets/images/h5-1.jpg',
+			bg: './assets/images/h5-2.jpg',
 			date: ' 2017-10-18',
 			from: '新媒体中心 产品研究院',
-			img: './assets/images/h5-1.jpg',
+			img: './assets/images/h5-2.jpg',
 			title: '刚刚，十九大开幕了！',
-			href: 'http://h5.zhongguowangshi.com/letter-xc-base3/index.html'
+			href: 'http://h5.zhongguowangshi.com/letter-xc-base3/index.html',
+			hrefs: []
 		}, { //3
-			bg: './assets/images/h5-11.jpg',
+			bg: './assets/images/h5-3.jpg',
 			date: ' 2017-10-18',
-			from: '新华网',
-			img: './assets/images/h5-11.jpg',
-			title: '@所有人 你有一封来自人民大会堂的信',
-			href: 'http://newdata.news.cn/srf/'
+			from: '新媒体中心',
+			isNewLayOut: true,
+			img: './assets/images/h5-3.jpg',
+			title: '@所有人：来自新时代的一份考卷，请查收',
+			href: 'https://h5.zhongguowangshi.com/qa19da/index.html',
+			hrefs: []
 		}, { //4
 			bg: './assets/images/h5-1.jpg',
 			date: '2017-10-24',
 			from: '新媒体中心',
 			img: './assets/images/h5-1.jpg',
 			title: '走复兴之路，这一程：强起来',
-			href: 'https://h5.hecoe.com/baidu/map/timeline171012/index.html'
+			href: 'https://h5.hecoe.com/baidu/map/timeline171012/index.html',
+			hrefs: []
 		}, { //5
 			bg: './assets/images/h5-3.jpg',
 			date: '2017-10-22',
 			from: '新华网',
 			img: './assets/images/h5-3.jpg',
 			title: '全息全景！带你换个方式看报告',
-			href: 'http://fms.news.cn/swf/2017qxbg/index.html'
+			href: 'http://fms.news.cn/swf/2017qxbg/index.html',
+			hrefs: []
 		}, { //6
 			bg: './assets/images/h5-1.jpg',
 			date: ' 2017-10-18',
 			from: '新媒体中心',
 			img: './assets/images/h5-1.jpg',
 			title: '全景！十九大隆重开幕',
-			href: 'http://mob.visualbusiness.cn/newsexhibition/index.html?albumId=A0C6240F3654428E9C766E4C97C778C5&preview=true'
+			href: 'http://mob.visualbusiness.cn/newsexhibition/index.html?albumId=A0C6240F3654428E9C766E4C97C778C5&preview=true',
+			hrefs: []
+		}, { //7
+			bg: './assets/images/h5-1.jpg',
+			date: '2017-10-23',
+			from: '新媒体中心',
+			img: './assets/images/h5-1.jpg',
+			title: '人民对美好生活的向往，就是我们的奋斗目标',
+			href: 'http://22cf92a9.u.h5mgd.com/campaigns/5984243e163bda0694090c83/20171023040332/59e9b988f7eb1f061613694a/index.html',
+			hrefs: []
+		}, { //8
+			bg: './assets/images/h5-1.jpg',
+			date: ' 2017-10-18',
+			from: '新媒体中心',
+			img: './assets/images/h5-1.jpg',
+			title: '@所有人 你有一封来自人民大会堂的信',
+			href: 'http://newdata.news.cn/srf/',
+			hrefs: []
+		}, { //9
+			bg: './assets/images/h5-1.jpg',
+			date: ' 2017-10-18',
+			from: '新媒体中心',
+			img: './assets/images/h5-1.jpg',
+			title: '习主席外交风采掠影',
+			href: 'http://fms.news.cn/swf/2017_sjxw/10_16_xjpzj/index.html',
+			hrefs: []
+		}, { //10
+			bg: './assets/images/h5-1.jpg',
+			date: ' 2017-10-18',
+			from: '新媒体中心',
+			img: './assets/images/h5-1.jpg',
+			title: '划重点，共点赞！跟新华社一起读十九大报告全文',
+			href: 'https://mp.weixin.qq.com/s?__biz=MzA4NDI3NjcyNA==&mid=2649368142&idx=1&sn=c80193245813b28ea9624eb3563e75df&chksm=87f722d5b080abc3f3a92faf1ce962bde21611cb801536faa0a6afd115898b37a4e0f99e568a#rdf72ccbb080a5dda0f28ec49a131d5208e8491847acc3989231f749e66e52fe3b40fd561e57#rd',
+			hrefs: []
 		}
 	],
 	videoList: [
@@ -69,46 +109,76 @@ var zmitiUtil = {
 			from: '全媒头条',
 			img: './assets/images/h5-1.jpg',
 			title: '震撼大片︳领航 ',
-			href: 'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2418515&isview=1&homeshow=0'
+			href: 'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2418515&isview=1&homeshow=0',
+			hrefs: []
 		}, { //2
 			bg: './assets/images/h5-1.jpg',
 			date: '2017-10-19',
 			from: '全媒头条',
 			img: './assets/images/h5-1.jpg',
 			title: '系列微视频“我们的自信”',
-			href: 'https://xhpfmapi.zhongguowangshi.com/theme/index.html?relid=19425&isview=1&homeshow=1'
+			href: 'https://xhpfmapi.zhongguowangshi.com/theme/index.html?relid=19425&isview=1&homeshow=1',
+			hrefs: []
 		}, { //3
 			bg: './assets/images/h5-1.jpg',
 			date: '2017-10-20',
 			from: 'cnc视频',
 			img: './assets/images/h5-1.jpg',
 			title: '中国共产党为什么行（一）（二）（三）（四）',
+			href: 'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2426505&isview=1&homeshow=1',
 			hrefs: ['https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2426505&isview=1&homeshow=1',
 				'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2428522&isview=1&homeshow=1',
 				'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2429921&isview=1&homeshow=1',
 				'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2431562&isview=1&homeshow=1'
 			]
 		}, { //4
-			bg: './assets/images/h5-1.jpg',
+			bg: './assets/images/h5-4.jpg',
 			date: '2017-10-19',
 			from: '新媒体中心',
-			img: './assets/images/h5-1.jpg',
+			img: './assets/images/h5-4.jpg',
 			title: '进入《新时代》，中国强起来！一起来听！',
-			href: 'http://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2423780'
+			href: 'http://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2423780',
+			hrefs: []
 		}, { //5
 			bg: './assets/images/h5-1.jpg',
 			date: '2017-10-18',
 			from: '新媒体中心',
 			img: './assets/images/h5-1.jpg',
 			title: '超燃视频宜收藏!300秒速览十九大报告!',
-			href: 'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2420249&isview=1&homeshow=1'
+			href: 'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2420249&isview=1&homeshow=1',
+			hrefs: []
 		}, { //6
-			bg: './assets/images/h5-1.jpg',
+			bg: './assets/images/h5-5.jpg',
 			date: '2017-10-18',
 			from: '新媒体中心',
-			img: './assets/images/h5-1.jpg',
+			img: './assets/images/h5-5.jpg',
 			title: '人民大会堂的“十九大时光”',
-			href: 'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2429334&isview=1&homeshow=1'
+			href: 'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2429334&isview=1&homeshow=1',
+			hrefs: []
+		}, { //7
+			bg: './assets/images/h5-5.jpg',
+			date: '2017-10-18',
+			from: '新媒体中心',
+			img: './assets/images/h5-5.jpg',
+			title: '时代在变 你变了吗？',
+			href: 'http://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2430504',
+			hrefs: []
+		}, { //8
+			bg: './assets/images/h5-5.jpg',
+			date: '2017-10-18',
+			from: '新媒体中心',
+			img: './assets/images/h5-5.jpg',
+			title: '解码党代会：十九大为何这么重要',
+			href: 'https://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2420331&isview=1&homeshow=1',
+			hrefs: []
+		}, { //9
+			bg: './assets/images/h5-5.jpg',
+			date: '2017-10-18',
+			from: '新媒体中心',
+			img: './assets/images/h5-5.jpg',
+			title: '微视频：“党代表通道”上的好声音',
+			href: 'http://xhpfmapi.zhongguowangshi.com/share/index.html?docid=2425150&channel=weixin&from=timeline&isappinstalled=0',
+			hrefs: []
 		}
 	],
 	init: function() {
@@ -116,87 +186,298 @@ var zmitiUtil = {
 		this.vue = new Vue({
 			el: '#zmiti-main-ui',
 			data: {
-				currentIndex: 0,
+				currentIndex: s.h5List.length - 1, //s.h5List.length / 2 | 0,
 				disX: 0,
 
 				activeTab: 'h5List',
 
 				currentHref: '',
 
+				indexPageClass: '',
+
+				showIndex: false,
+
 				isTransition: 12,
 
 				pageList: [],
 
+				showCurtain: false,
+
 				h5List: s.h5List,
-				videoList: s.videoList
+				videoList: s.videoList,
+				textArr: ['一', '二', '三', '四', '五']
 			},
 			methods: {
 				changeToScene: function(type) {
-					this.pageList = this[type];
+					if (arguments.callee.type === type) {
+						return;
+					}
+					this.showCurtain = true;
 					this.activeTab = type;
+
+					setTimeout(function() {
+						this.currentIndex = 0;
+					}.bind(this), 500)
+					setTimeout(function() {
+						this.pageList = this[type];
+						this.showCurtain = false;
+						s.initPos();
+
+					}.bind(this), 1000);
+
+
+					arguments.callee.type = type;
+				},
+				entryDetail: function(subject) {
+					if (subject.isNewLayOut) {
+						window.location.href = subject.href + '?zmiti=zmiti'
+							//$('#meta').attr('content', 'width=640,user-scalable=no');
+
+					} else {
+						//$('#meta').attr('content', 'width=device-width,initial-scale=1.0,user-scalable=no')
+
+					}
+					this.currentHref = subject.href;
+
+					/*setTimeout(function() {
+						$('.zmiti-back').css({
+							width: subject.isNewLayOut ? '3rem' : '1.5rem',
+							height: subject.isNewLayOut ? '3rem' : '1.5rem'
+						})
+					}, 100)*/
+
+				},
+				back: function() {
+					$('#meta').attr('content', 'width=device-width,initial-scale=1.0,user-scalable=no')
+
+					this.currentHref = '';
 				}
 			},
 			beforeCreate: function() {
 
 			},
 			created: function() {
+				var s = this;
+
 				this.h5List.forEach(function(list, i) {
-					list.bg = list.img = './assets/images/h5-' + (i + 1) + '.jpg';
+					list.img = './assets/images/h5-' + (i + 1) + '.jpg';
+					list.bg = './assets/images/h5-' + (i + 1) + '-1.jpg';
 					list.title = list.title.trim().replace(/\n/ig, '');
+					if (i === s.currentIndex) {
+						list.className = 'active';
+					} else {
+						if (i > s.currentIndex) {
+							list.className = 'right transition'
+						}
+						if (i > s.currentIndex + 1) {
+							list.className = 'right1 '
+						}
+						if (i < s.currentIndex) {
+							list.className = 'left transition'
+						}
+						if (i < s.currentIndex + 1) {
+							list.className = 'left1 transition'
+						}
+					}
 				});
+
 				this.videoList.forEach(function(list, i) {
-					list.bg = list.img = './assets/images/video-' + (i + 1) + '.jpg';
+					list.img = './assets/images/video-' + (i + 1) + '.jpg';
+					list.bg = './assets/images/video-' + (i + 1) + '-1.jpg';
+
+					if (i === s.currentIndex) {
+						list.className = 'active';
+					} else {
+						if (i > s.currentIndex) {
+							list.className = 'right transition'
+						}
+						if (i > s.currentIndex + 1) {
+							list.className = 'right1 '
+						}
+						if (i < s.currentIndex) {
+							list.className = 'left transition'
+						}
+						if (i < s.currentIndex - 1) {
+							list.className = 'left1 transition'
+						}
+					}
 				});
 				this.pageList = this.h5List;
 
 				$('#zmiti-main-ui').on('touchmove', function(e) {
 					e.preventDefault()
 				})
+
+				var key = zmitiUtil.getQueryString('zmiti');
+
+				this.showIndex = key !== 'zmiti';
+
+
 			}
 		});
 
 		this.bindEvent();
+		this.initPos();
+
+		if (zmitiUtil.getQueryString('zmiti') === 'zmiti') {
+
+			this.initPos();
+			this.initPos();
+		}
+
+		this.wxConfig(document.title, document.title, 'http://h5.zhongguowangshi.com/' + window.h5name + '/assets/images/300.jpg');
+	},
+
+	initPos: function() {
+		var s = this;
+
+		s.vue.currentIndex = (s.vue.currentIndex + 1) % s.vue.pageList.length;
+
+		var classList = [
+			'left1 transition',
+			'left transition',
+			'active transition',
+			'right ',
+			'right1 '
+		]
+		var pageList = s.vue.pageList,
+			currentIndex = s.vue.currentIndex;
+
+		pageList.forEach(function(list, i) {
+
+			if (currentIndex > i) {
+				pageList[i].className = classList[0]
+			} else if (currentIndex < i) {
+				pageList[i].className = classList[4]
+			}
+
+			(pageList[currentIndex + 1] || pageList[0])['className'] = classList[3];
+			(pageList[currentIndex + 2] || pageList[1])['className'] = classList[4];
+			(pageList[currentIndex - 1] || pageList[pageList.length - 1])['className'] = classList[1];
+			//(pageList[currentIndex - 2] || pageList[pageList.length - 2])['className'] = classList[0];
+		})
+
+
+
+		pageList[currentIndex].className = classList[2];
 	},
 	bindEvent: function() {
 		var s = this;
 		$('#zmiti-subject-list').swipe('left', function(e, _this) {
 
+			//s.vue.pageList.push(s.vue.pageList.shift())
 
-			if (s.vue.currentIndex >= s.vue.pageList.length - 1) {
+			s.initPos();
+			/*
+						s.vue.pageList.forEach(function(list, i) {
 
-				//$(_this).find('li:eq(-1)').removeClass('zmiti-page-item');
+
+							if (i === s.vue.currentIndex) {
+								list.className = 'active transition';
+							} else {
+								if (i > s.vue.currentIndex) {
+									list.className = 'right transition'
+								}
+								if (i > s.vue.currentIndex + 1) {
+									list.className = 'right1 '
+								}
+								if (i < s.vue.currentIndex) {
+									list.className = 'left transition'
+								}
+								if (i < s.vue.currentIndex - 1) {
+									list.className = 'left1 transition'
+								}
+							}
+							if (i === s.vue.pageList.length - 2) {
+								//s.vue.pageList[0].className = 'right1'
+							}
+
+
+						});*/
+
+
+			/*if (s.vue.currentIndex >= s.vue.pageList.length - 1) {
+
+				s.vue.pageList
 
 				s.vue.currentIndex = s.vue.pageList.length - 1;
 			} else {
 				s.vue.isTransition = 12;
-				s.vue.currentIndex = s.vue.currentIndex + 1;
-			}
+			}*/
+
 		}).swipe('right', function(e, _this) {
+
+
+			s.vue.currentIndex = s.vue.currentIndex - 1;
+
+			if (s.vue.currentIndex < 0) {
+				s.vue.currentIndex = s.vue.pageList.length - 1;
+			}
+			var pageList = s.vue.pageList,
+				currentIndex = s.vue.currentIndex;
+
+
+			//console.log(s.vue.currentIndex)
+
+			s.vue.currentIndex = s.vue.currentIndex % pageList.length;
+
+			var classList = [
+				'left1 ',
+				'left ',
+				'active transition',
+				'right transition',
+				'right1 transition'
+			]
+
+			pageList.forEach(function(list, i) {
+
+				if (currentIndex > i) {
+					pageList[i].className = classList[0]
+				} else if (currentIndex < i) {
+					pageList[i].className = classList[4]
+				}
+
+				(pageList[currentIndex + 1] || pageList[0])['className'] = classList[3];
+				(pageList[currentIndex + 2] || pageList[1])['className'] = classList[4];
+				(pageList[currentIndex - 1] || pageList[pageList.length - 1])['className'] = classList[1];
+				//(pageList[currentIndex - 2] || pageList[pageList.length - 2])['className'] = classList[0];
+			})
+
+
+			console.log(currentIndex)
+			pageList[currentIndex].className = classList[2];
+
+
+			return;
 			if (s.vue.currentIndex <= 0) {
-				s.vue.currentIndex = 0;
-				////$(_this).find('li:eq(-1)').removeClass('right right1').addClass('left');
-				return;
+				s.vue.currentIndex = s.vue.pageList.length - 1;
+
 			} else {
 				s.vue.currentIndex = s.vue.currentIndex - 1;
 			}
-		});
-	},
 
-	savePV: function(opt) {
-		$.ajax({
-			url: 'http://api.zmiti.com/v2/weixin/save_userview/',
-			type: 'post',
-			data: {
-				worksid: worksid,
-				wxopenid: opt.openid,
-				wxname: opt.nickname,
-				usercity: opt.address,
-				longitude: opt.longitude,
-				latitude: opt.latitude
-			},
-			error: function() {},
-			success: function(data) {}
-		})
+			s.vue.pageList.forEach(function(list, i) {
+
+
+				if (i === s.vue.currentIndex) {
+					list.className = 'active transition';
+				} else {
+					if (i > s.vue.currentIndex) {
+						list.className = 'right transition'
+					}
+					if (i > s.vue.currentIndex + 1) {
+						list.className = 'right1 '
+					}
+					if (i < s.vue.currentIndex) {
+						list.className = 'left transition'
+					}
+					if (i < s.vue.currentIndex - 1) {
+						list.className = 'left1 transition'
+					}
+				}
+
+			});
+		});
 	},
 	randomString: function(len) {　
 		var len = len || 8;　　
@@ -244,135 +525,6 @@ var zmitiUtil = {
 		}
 	},
 
-	getPos: function(nickname, headimgurl) {
-		var s = this;
-		//alert(wx.posData.longitude+'' +wx.posData.latitude)
-		$.ajax({
-			url: 'http://restapi.amap.com/v3/geocode/regeo?key=10df4af5d9266f83b404c007534f0001&location=' + wx.posData.longitude + ',' + wx.posData.latitude + '&poitype=&radius=100&extensions=base&batch=false&roadlevel=1+ ',
-			type: 'get',
-			error() {
-
-			},
-			success(data) {
-
-
-
-				if (data.status === '1' && data.infocode === '10000') {
-
-					var addressComponent = data.regeocode.addressComponent;
-
-					var opt = {
-						type: 'map',
-						address: (addressComponent.province || addressComponent.city[0]) + ' ' + (addressComponent.city || ''),
-						pos: [wx.posData.longitude, wx.posData.latitude],
-						nickname: nickname,
-						headimgurl: headimgurl
-					}
-					window.city = (addressComponent.province || addressComponent.city[0]) + ' ' + (addressComponent.city || '');
-					$('.wx-user-pos em:eq(1)').html(window.city)
-					$('.wx-xy span').html(window.city);
-					s.getNum();
-					var posData = s.posData();
-					var index = Math.random() * posData.length | 0;
-
-
-					$.ajax({
-						url: 'http://api.zmiti.com/v2/weixin/save_userview/',
-						type: 'post',
-						data: {
-							worksid: worksid,
-							wxopenid: s.openid,
-							wxname: nickname,
-							usercity: opt.address,
-							longitude: wx.posData.longitude,
-							latitude: wx.posData.latitude
-						},
-						error: function() {},
-						success: function(data) {}
-					})
-
-
-					$.ajax({
-						url: 'http://api.zmiti.com/v2/weixin/add_wxuser/',
-						type: 'post',
-						data: {
-							wxopenid: s.openid,
-							worksid: worksid,
-							nickname: nickname,
-							headimgurl: headimgurl,
-							longitude: wx.posData.longitude,
-							latitude: wx.posData.latitude,
-							accuracy: wx.posData.accuracy,
-							wxappid: data.wxappid,
-							integral: localStorage.getItem('nickname') ? 0 : 10
-						},
-						error() {
-							//alert('add_wxuser: 服务器返回错误');
-						},
-						success(data) {
-							if (data.getret === 0) {
-
-							} else {
-								//alert('getret  : ' + data.getret + ' msg : ' + data.getmsg + ' .....');
-							}
-						}
-					});
-
-					//获取用户积分
-					//
-					$.ajax({
-						url: 'http://api.zmiti.com/v2/msg/send_msg/',
-						data: {
-							type: worksid,
-							content: JSON.stringify(opt),
-							to: opt.to || ''
-						},
-						success(data) {
-							s.state.showUI = true;
-							s.forceUpdate();
-							//console.log(data);
-						}
-					})
-				} else {
-					///alert('地址信息获取失败')
-					///
-					///
-					var opt = {
-						type: 'map',
-						address: '北京市',
-						pos: [wx.posData.longitude, wx.posData.latitude],
-						nickname: nickname,
-						headimgurl: headimgurl
-					}
-					window.city = '北京市';
-					$('.wx-user-pos em:eq(1)').html(window.city)
-					$('.wx-xy span').html(window.city);
-					s.getNum();
-					var posData = s.posData();
-					var index = Math.random() * posData.length | 0;
-
-
-					$.ajax({
-						url: 'http://api.zmiti.com/v2/weixin/save_userview/',
-						type: 'post',
-						data: {
-							worksid: worksid,
-							wxopenid: s.openid,
-							wxname: nickname,
-							usercity: opt.address,
-							longitude: wx.posData.longitude,
-							latitude: wx.posData.latitude
-						},
-						error: function() {},
-						success: function(data) {
-
-						}
-					})
-				}
-			}
-		})
-	},
-
 	wxConfig: function(title, desc, img, url) {
 		var s = this;
 		var appId = data.wxappid; //'wxfacf4a639d9e3bcc'; // data.wxappid; // 'wxfacf4a639d9e3bcc'; //data.wxappid;
@@ -387,7 +539,8 @@ var zmitiUtil = {
 
 		$.ajax({
 			type: 'get',
-			url: "http://api.zmiti.com/weixin/jssdk.php?type=signature&durl=" + code_durl,
+			url: "http://h5.zhongguowangshi.com/" + window.h5name + "/weixin/jssdk.php?type=signature&durl=" + code_durl + '&worksid=' + worksid,
+			//url: "http://api.zmiti.com/weixin/jssdk.php?type=signature&durl=" + code_durl,
 			dataType: 'jsonp',
 			jsonp: "callback",
 			jsonpCallback: "jsonFlickrFeed",
@@ -415,79 +568,6 @@ var zmitiUtil = {
 
 				wx.ready(function() {
 
-
-					this.locationFail = true;
-					var _this = this;
-					if (!wx.isLoad) {
-						wx.isLoad = true;
-						wx.getLocation({
-							type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
-							fail: function() {
-								//window.debug && alert('定位失败,重新进入');
-								//window.location.href = window.location.href;
-								var idx = Math.random() * s.pData().length | 0;
-
-								var latitude = s.posData()[idx].lat; // 纬度，浮点数，范围为90 ~ -90
-
-								var longitude = s.posData()[idx].log; // 经度，浮点数，范围为180 ~ -180。
-
-								var accuracy = 100; // 位置精度
-								wx.posData = {
-									longitude,
-									latitude,
-									accuracy
-								};
-
-								if ((s.nickname || s.headimgurl) && s.openid && _this.locationFail) {
-									_this.locationFail = false;
-
-									s.getPos(s.nickname, s.headimgurl);
-
-								}
-							},
-							cancel: function() {
-
-								var idx = Math.random() * s.posData().length | 0;
-
-								var latitude = s.posData()[idx].lat; // 纬度，浮点数，范围为90 ~ -90
-
-								var longitude = s.posData()[idx].log; // 经度，浮点数，范围为180 ~ -180。
-
-								var accuracy = 100; // 位置精度
-								wx.posData = {
-									longitude,
-									latitude,
-									accuracy
-								};
-
-								if ((s.nickname || s.headimgurl) && s.openid && _this.locationFail) {
-									_this.locationFail = false;
-
-									s.getPos(s.nickname, s.headimgurl);
-
-								}
-							},
-							success: function(res) {
-								var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-								var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-								var speed = res.speed; // 速度，以米/每秒计
-								var accuracy = res.accuracy; // 位置精度
-
-								wx.posData = {
-									longitude,
-									latitude,
-									accuracy
-								};
-
-								if ((s.nickname || s.headimgurl) && s.openid && _this.locationFail) {
-									_this.locationFail = false;
-									s.getPos(s.nickname, s.headimgurl);
-
-								}
-
-							}
-						});
-					}
 
 
 					//朋友圈
@@ -533,17 +613,46 @@ var zmitiUtil = {
 	}
 };
 
-$(function() {
-	var imgs = [];
-	zmitiUtil.h5List.forEach(function(list) {
-		imgs.push(list.img)
-		imgs.push(list.bg)
+
+var key = zmitiUtil.getQueryString('zmiti');
+if (key === 'zmiti') {
+	$("#zmiti-loading").css({
+		display: 'none'
 	})
-	zmitiUtil.videoList.forEach(function(list) {
-			imgs.push(list.img)
-			imgs.push(list.bg)
-		})
-		//zmitiUtil.loading()
+
+
+} else {
+	$("#zmiti-loading").css({
+		display: 'block'
+	})
+
+
+}
+
+$(function() {
+	var imgs = [
+		'./assets/images/bottom.png',
+		'./assets/images/copyright.png',
+		'./assets/images/top.png',
+		'./assets/images/title.png',
+		'./assets/images/h5.png',
+		'./assets/images/video.png',
+		'./assets/images/dang.png',
+		'./assets/images/ico-h5-1.png',
+		'./assets/images/ico-h5-2.png',
+		'./assets/images/ico-video-2.png',
+		'./assets/images/ico-video-1.png',
+	];
+	zmitiUtil.h5List.forEach(function(list, i) {
+		imgs.push('./assets/images/h5-' + (i + 1) + '.jpg')
+		imgs.push('./assets/images/h5-' + (i + 1) + '-1.jpg')
+	})
+	zmitiUtil.videoList.forEach(function(list, i) {
+		imgs.push('./assets/images/video-' + (i + 1) + '.jpg')
+		imgs.push('./assets/images/video-' + (i + 1) + '-1.jpg')
+	})
+
+	//zmitiUtil.loading()
 	zmitiUtil.loading(imgs, function(scale) {
 		var scale = scale * 100 | 0;
 		$('#zmiti-loading span').width(scale + '%')
@@ -554,6 +663,7 @@ $(function() {
 		zmitiUtil.init()
 		setTimeout(function() {
 			$('#zmiti-loading').remove();
+			zmitiUtil.vue.indexPageClass = 'active'
 		}, 500)
 	});
 })
