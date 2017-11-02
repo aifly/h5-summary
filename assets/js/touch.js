@@ -24,8 +24,8 @@
         var MOVE = isMobile ? "touchmove" : "mousemove";
         var UP = isMobile ? "touchend" : "mouseup";
         var config = $.extend(setting, option);
-
         this.on(CLICK, function(e) {
+
 
             var e = isMobile ? e.originalEvent.changedTouches[0] : e;
             var startX = e.pageX,
@@ -38,23 +38,28 @@
                     endY = e.pageY,
                     endTime = Date.now();
 
+
+
                 if (type.toLowerCase() === "left" && Math.abs((endY - startY) / (endX - startX)) <= 1 && (startX - endX) > config.disX) {
-                    self.off(MOVE);
+                    //self.off(MOVE + ' ' + UP);
                     for (var i = 0; i < _this.listener[type].length; i++) {
 
-                        _this.listener[type][i] && _this.listener[type][i](e, _this);
+                        //_this.listener[type][i] && _this.listener[type][i](e, _this);
                     }
                 } else if (type.toLowerCase() === "right" && Math.abs((endY - startY) / (endX - startX)) <= 1 && (endX - startX) > config.disX) {
-                    self.off(MOVE);
+                    // console.log('right')
+                    //self.off(MOVE + ' ' + UP);
                     for (var i = 0; i < _this.listener[type].length; i++) {
-                        _this.listener[type][i] && _this.listener[type][i](e, _this);
+                        //  _this.listener[type][i] && _this.listener[type][i](e, _this);
                     }
                 } else {
                     e.preventDefault && e.preventDefault();
                     return false;
                 }
 
+
             }).on(UP, function(e) {
+
                 var e = isMobile ? e.originalEvent.changedTouches[0] : e;
                 var endX = e.pageX,
                     endY = e.pageY,
@@ -62,6 +67,9 @@
                 if (endTime - startTime >= config.responseTime) {
                     return;
                 }
+
+                self.off(MOVE + ' ' + UP)
+
                 switch (type.toLowerCase()) {
                     case "down":
                         if ((endY - startY) > config.disY && Math.abs((endY - startY) / (endX - startX)) > 1) {
@@ -77,8 +85,22 @@
                             }
                         }
                         break;
-                }
 
+                    case 'left':
+                        if (Math.abs((endY - startY) / (endX - startX)) <= 1 && (startX - endX) > config.disX) {
+                            for (var i = 0; i < _this.listener[type].length; i++) {
+                                _this.listener[type][i] && _this.listener[type][i](e, _this);
+                            }
+                        }
+                        break;
+                    case 'right':
+                        if (Math.abs((endY - startY) / (endX - startX)) <= 1 && (endX - startX) > config.disX) {
+                            for (var i = 0; i < _this.listener[type].length; i++) {
+                                _this.listener[type][i] && _this.listener[type][i](e, _this);
+                            }
+                        }
+                        break;
+                }
             });
 
             //if (!isMobile) {

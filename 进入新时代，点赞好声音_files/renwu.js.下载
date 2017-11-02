@@ -1,0 +1,37 @@
+var regoin = 'ddb',
+renwu = {
+	
+	'guomingyi' :{
+		xm:'郭明义',avatar:'avatar/i_1.png',desc:'介绍',sound:'sound/s_1.mp3'
+	},
+	'songyushui' :{
+		xm:'宋鱼水',avatar:'avatar/i_2.png',desc:'介绍',sound:'sound/s_2.mp3'
+	},
+	'xucuan' :{
+		xm:'徐川',avatar:'avatar/i_3.png',desc:'介绍',sound:'sound/s_3.mp3'
+	},
+	'zhangruiming' :{
+		xm:'张瑞敏',avatar:'avatar/i_4.png',desc:'介绍',sound:'sound/s_4.mp3'
+	},
+	'jinhaipeng' :{
+		xm:'景海鹏',avatar:'avatar/i_5.png',desc:'介绍',sound:'sound/s_5.mp3'
+	},
+	'lingjiefang' :{
+		xm:'凌解放',avatar:'avatar/i_6.png',desc:'介绍',sound:'sound/s_6.mp3'
+	},
+	'gonglijiao' :{
+		xm:'巩立姣',avatar:'avatar/i_7.png',desc:'介绍',sound:'sound/s_7.mp3'
+	},
+	'kanghonpu' :{
+		xm:'康红普',avatar:'avatar/i_8.png',desc:'介绍',sound:'sound/s_8.mp3'
+	},
+	'caisongtao' :{
+		xm:'蔡松涛',avatar:'avatar/i_9.png',desc:'介绍',sound:'sound/s_9.mp3'
+	},
+	'yangxiaolin' :{
+		xm:'杨小玲',avatar:'avatar/i_10.png',desc:'介绍',sound:'sound/s_10.mp3'
+	}
+
+}
+
+

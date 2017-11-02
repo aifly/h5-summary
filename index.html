@@ -21,6 +21,10 @@
 		</div>
 	</div>
 	<div class="zmiti-main-ui" id="zmiti-main-ui">
+		
+		<div class="zmiti-mask lt-full" v-if='showTips' @click='entryNewPage'>
+			<img src="./assets/images/tip.png">
+		</div>
 		<div class="zmiti-index-page lt-full"  v-if='showIndex' :class='indexPageClass'>
 			<div class="zmiti-index-top">
 				<img src="./assets/images/top.png">
@@ -35,7 +39,7 @@
 				<img src="./assets/images/bottom.png">
 			</div>
 			<div class="zmiti-index-text">
-				十九大期间，新华社制作、发布了大量包括微视频、H5轻应用、全景等不同形态的融媒体报道产品，这些产品“可分享、强互动，重体验”，为受众了解此次党代会提供了全新模式。
+				十九大期间，新华社制作、发布了大量微视频、H5轻应用、全景新闻等不同形态的融媒体报道产品，这些产品“可分享、强互动，重体验”，为受众了解此次党代会提供了全新模式。
 			</div>
 			<div class="zmiti-index-copyright">
 				<img src="./assets/images/copyright.png">
@@ -55,6 +59,12 @@
 					class="lt-full" v-for='(subject,index) in pageList' @click='entryDetail(subject)' >
 						<div class="zmiti-img-C">
 							<img draggable='false' v-bind:src='subject.img'/>
+							<div v-if='subject.videos && subject.videos.length' class="zmiti-video-list">
+								<div @click.stop='entryVideo(v)' v-for='(v,k) in subject.videos'>
+									<span>{{v.title}}</span>
+								</div>
+								
+							</div>
 							<div class="zmiti-btn-list">
 								<section v-if='subject.hrefs.length>0' class="zmiti-btn-title">视频系列</section>
 								<div v-for='(href,i) in subject.hrefs'>

@@ -1,0 +1,341 @@
+
+
+// OfoApp
+
+var ajaxData, queue, cardIndex,timer1,
+lastEventTime = Date.now(), lastSound,
+isMove = false, toatlNum = 0;
+
+$.ajax({
+  url: "../jishu/"+regoin+"?"+Date.now(),
+  type:"GET",
+}).success(function(res) {
+  if (res.code == 200){ 
+    ajaxData = res.data
+    loading()
+  }
+}).error(function(err){
+  console.log(err)
+})
+
+
+
+
+function loading() {
+  var loadTxt = document.querySelector('.asset ._load var'),
+      manifest = [];
+
+  queue = new createjs.LoadQueue(true);
+  queue.installPlugin(createjs.Sound);
+
+  ajaxData.forEach(function(d, i) {
+    var r = renwu[d.name];
+    manifest.push({id: 'avatar_'+d.name, src: r.avatar});
+    manifest.push({id: 'sound_'+d.name, src: r.sound});
+    toatlNum+= d.num
+  })
+  queue.on("progress", function(p) {
+    // loadTxt.innerText = Math.floor(p.loaded * 100) + '%'
+  });
+  queue.on("complete", function() {
+    appInit()
+  })
+  
+  queue.loadManifest(manifest);
+  
+}
+
+
+
+
+function parseUrl() {
+  var rid = location.href.indexOf('#') > -1 ? location.href.split('#')[1] : "";
+  if (renwu[rid]){  RW = rid}
+  else{
+    for (var key in renwu) { 
+      if (Math.random() > 0.5) { RW = key; break}
+    }
+  }
+  for (var i =0 ,j= ajaxData.length; i<j; i++) {
+    if (ajaxData[i].name == RW){ cardIndex = i; break }
+  }
+}
+
+function add1Ani(ele, callback) {
+  ele.innerHTML = '<span id="add1" style="font-weight:bold; transition:0.3s ease-in;-webkit-transition:0.3s ease-in; color:#980309;position:absolute;top:10px;right:0px;">+1</span>';
+  var add = document.getElementById('add1');
+  setTimeout(function(){add.style['top'] = '-20px';},50)
+  setTimeout(function(){callback(); add.remove()}, 300)
+}
+
+
+
+function genCard(i,w) {
+  var data,str,cardWidth = 0.8*w
+  data = ajaxData[i]
+  str = '<div class="card" title="'+data.name+'" style="width:'+cardWidth+'px; margin-left:'+(i==0?0.1*w: w*0.05)+'px;">'+
+            '   <div class="left" style="width:'+cardWidth*0.26+'px"> <img class="avatar" style="width:'+cardWidth*0.26+'px; margin-left:-'+cardWidth*0.13+'px;margin-top:-'+cardWidth*0.13+'px;"  src="'+renwu[data.name].avatar+'">'+
+            '<img class="mzbtn" src="../static/images/mzbtn.png" /> </div>'+
+            '    <div class="right" style="width:'+(cardWidth*0.68 -20)+'px">'+
+            '        <div class="h">'+
+            '            <span class="name">'+data.xm+'</span>'+
+            '            <div class="line"></div>'+
+            '            <div class="sharebtn"><img src="../static/images/sharetipbtn.png"></div>'+
+            '        </div>'+
+            '        <div class="pointer"><img class="p1" src="../static/images/pointer.gif"><img class="p2" src="../static/images/pointer.png"></div>'+
+            '        <div class="txt">'+
+            '            <div class="txt1">已有<span class="num">'+data.num+'</span>位<br/>与<span class="rw">'+data.xm+'</span>一同点赞</div>'+
+            '            <div class="txt2">你是第<span class="num">'+(data.num+1)+'</span>位<br/>与<span class="rw">'+data.xm+'</span>一同点赞的人</div>'+
+            '        </div>'+
+            '    </div>'+
+            '</div>'
+  return str 
+}
+
+function genCards(w) {
+  var h = w*0.262 + 80, avatarsml = '',
+  html = '<div class="w" style="height:'+h+'px; width:'+w*ajaxData.length+'px">'
+  $(".cards").css("height",h +"px");
+  $(".smlavavtar").css("width",ajaxData.length*52+"px")
+  for (var i =0, j= ajaxData.length; i<j; i++) {
+    html += genCard(i,w)
+    avatarsml+= '<img src="'+renwu[ajaxData[i].name].avatar+'" title="'+i+'" />'
+  }
+  html += '</div>';
+  $(".smlavavtar").html(avatarsml);
+  $(".cards").empty().html(html)
+
+}
+
+function mvRight(width) {
+  cardIndex--
+  if (cardIndex < 0 ) return cardIndex = 0
+  isMove = true
+  afterSetIndex(width)
+  setTimeout(function() {
+    isMove = false
+  },100)
+}
+
+function afterSetIndex(width,first) {
+  var left ,max = width /46, ad;
+  left = -(width*cardIndex*0.85)+'px'
+  $(".cards .w").css("left", left)
+  $(".smlavavtar").css("left",- 46*(cardIndex - max/2)+"px")
+  $(".smlavavtar img.on").removeClass("on")
+  $(".smlavavtar img").eq(cardIndex).addClass('on')
+
+  
+  first ? playSound(): setTimeout(function() {
+    playSound()
+  },1000)
+  
+  location.hash = ajaxData[cardIndex].name
+  setWeixinShare()
+
+}
+
+function playSound() {
+  if(lastSound) lastSound.pause()
+  ad = queue.getResult('sound_'+ ajaxData[cardIndex].name)
+  if (ad) { ad.currentTime = 0; ad.play(); lastSound = ad}
+}
+
+function mvLeft(width) {
+  cardIndex ++
+  if (cardIndex >= ajaxData.length) return cardIndex = ajaxData.length -1
+  isMove = true
+  afterSetIndex(width)
+  setTimeout(function() {
+    isMove = false
+  },100)
+}
+
+
+function showTip() {
+  $(".poper").show()
+  setTimeout(function() {
+    $(".poper").fadeOut()
+  },2000)
+}
+
+function appInit() {
+  var width = $(".cards").width(), 
+  $cards = $(".cards"),
+  cardHm = new Hammer($cards[0],{
+    direction: Hammer.DIRECTION_HORIZONTAL
+  }) ;
+  $(".cards .w").css({transition: '1.5s',
+    '-webkit-transition': '1.5s'})
+  parseUrl()
+  genCards(width)
+  afterSetIndex(width, 1)
+  $(".card .mzbtn").css({
+    "margin-left":-$(".card .mzbtn").width()/2+"px",
+    "margin-top": $(".card .mzbtn").width() +"px"})
+  $(".toatl span").text(toatlNum)
+  $(".container").css("opacity",1)
+  $(".asset").remove()
+
+  cardHm.on("pan",function(ev){
+    // console.log(ev)
+    var now = Date.now()
+    if ( now - lastEventTime< 1500) return
+    if (isMove) return
+    lastEventTime = now
+    if (ev.deltaX > 5) return mvRight(width)
+    if (ev.deltaX < -5) return mvLeft(width)
+  })
+
+  $(".smlavavtar img").on("click",function(){
+    var i = parseInt($(this).attr('title'))
+    cardIndex = i
+    afterSetIndex(width)
+  })
+
+  $(".card .pointer").on("click",function (e) {
+    if ($(this).hasClass("ckd")) {
+      return showTip()
+    }
+    $(this).addClass("ckd");
+    $(".card .txt").eq(cardIndex).addClass("ckd");
+    toatlNum++
+    $(".toatl span").text(toatlNum)
+    $.ajax({
+      "url":"../renwu/"+ajaxData[cardIndex].name+"?"+Date.now(),
+      "type":"POST",
+      data:{}
+    }).error(function(e){
+      console.log(e)
+    })
+  })
+
+  $(".card .mzbtn").on("click",function(){
+    playSound()
+  })
+
+  $(".card .h .sharebtn").on("click",function() {
+    showTip()
+  })
+}
+
+
+var sharesum = '进入新时代，中国强起来';
+
+function setWeixinShare() {
+  var shareTit = '我与'+ajaxData[cardIndex].xm+'一起点赞新时代';
+  var shareUrl = window.location.href;
+  var shareImg = document.querySelector(".share-img").nodeName.toLowerCase()==="div"?document.querySelector(".share-img").querySelector("img").src:document.querySelector(".share-img").src;
+  
+  if (!wx) return
+
+  wx.onMenuShareAppMessage({
+      title: shareTit,
+      desc: sharesum,
+      link: shareUrl,
+      imgUrl: shareImg,
+      trigger: function(res) {
+          
+      },
+      success: function(res) {
+          //alert('已分享');
+      },
+      cancel: function(res) {
+          //alert('已取消');
+      },
+      fail: function(res) {
+          //alert(JSON.stringify(res));
+      }
+  });
+
+  // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+  wx.onMenuShareTimeline({
+      title: shareTit,
+      link: shareUrl,
+      imgUrl: shareImg,
+      trigger: function(res) {
+          // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+          ///alert('用户点击分享到朋友圈');
+      },
+      success: function(res) {
+          //alert('已分享');
+      },
+      cancel: function(res) {
+          //alert('已取消');
+      },
+      fail: function(res) {
+          //alert(JSON.stringify(res));
+      }
+  });
+
+  // 2.3 监听“分享到QQ”按钮点击、自定义分享内容及分享结果接口
+  wx.onMenuShareQQ({
+      title: shareTit,
+      desc: sharesum,
+      link: shareUrl,
+      imgUrl: shareImg,
+      trigger: function(res) {
+          //alert('用户点击分享到QQ');
+      },
+      complete: function(res) {
+          //alert(JSON.stringify(res));
+      },
+      success: function(res) {
+          //alert('已分享');
+      },
+      cancel: function(res) {
+          //alert('已取消');
+      },
+      fail: function(res) {
+          //alert(JSON.stringify(res));
+      }
+  });
+
+  // 2.4 监听“分享到微博”按钮点击、自定义分享内容及分享结果接口
+  wx.onMenuShareWeibo({
+      title: shareTit,
+      desc: sharesum,
+      link: shareUrl,
+      imgUrl: shareImg,
+      trigger: function(res) {
+          //alert('用户点击分享到微博');
+      },
+      complete: function(res) {
+          //alert(JSON.stringify(res));
+      },
+      success: function(res) {
+          ///alert('已分享');
+      },
+      cancel: function(res) {
+          //alert('已取消');
+      },
+      fail: function(res) {
+          //alert(JSON.stringify(res));
+      }
+  });
+
+  // 2.5 监听“分享到QZone”按钮点击、自定义分享内容及分享接口
+  wx.onMenuShareQZone({
+      title: shareTit,
+      desc: sharesum,
+      link: shareUrl,
+      imgUrl: shareImg,
+      trigger: function(res) {
+          //alert('用户点击分享到QZone');
+      },
+      complete: function(res) {
+          //alert(JSON.stringify(res));
+      },
+      success: function(res) {
+          //alert('已分享');
+      },
+      cancel: function(res) {
+          //alert('已取消');
+      },
+      fail: function(res) {
+          //alert(JSON.stringify(res));
+      }
+  });
+}
+
+

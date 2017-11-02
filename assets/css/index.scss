@@ -161,7 +161,7 @@ $color: #b72d2b;
       @include pos(a);
       width: 8rem;
       left: 1rem;
-      top: 4rem;
+      top: 3.5rem;
       opacity: 0;
       @include transition(.55s .5s);
       @include transform(translate3d(0, 1rem, 0));
@@ -178,8 +178,8 @@ $color: #b72d2b;
 
     .zmiti-index-text {
       @include pos(a);
-      width: 8rem;
-      left: 1rem;
+      width: 7.8rem;
+      left: 1.1rem;
       bottom: 2.5rem;
       color: $color;
       text-indent: 2em;
@@ -192,9 +192,9 @@ $color: #b72d2b;
     .zmiti-index-copyright {
       @include pos(a);
       z-index: 10;
-      bottom: .5rem;
-      width: 5rem;
-      left: 2.5rem;
+      bottom: .2rem;
+      width: 4rem;
+      left: 3rem;
       opacity: 0;
       @include transition(opacity 1s 1s);
     }
@@ -321,6 +321,38 @@ $color: #b72d2b;
 
           &.zmiti-page-item {
             @include transition_transform(.4s);
+          }
+
+          .zmiti-video-list {
+            width: 100%;
+            height: 100%;
+            @include pos(a);
+
+            &>div {
+              height: 48%;
+              width: 100%;
+              @include pos(a);
+              top: 0;
+              left: 0;
+              color: #b40012;
+
+              &:nth-of-type(2) {
+                bottom: .3rem;
+                top: auto;
+              }
+
+              &>span {
+                @include pos(a);
+                font-size: .4rem;
+                width: 100%;
+                text-align: center;
+                width: 90%;
+                bottom: .5rem;
+                left: 5%;
+              }
+
+            }
+
           }
 
           .zmiti-btn-list {
@@ -536,17 +568,24 @@ $color: #b72d2b;
       width: 100%;
       height: 100%;
       background: #fff;
+      overflow: hidden;
     }
 
-    .zmiti-back {
+    @at-root.zmiti-back {
       @include pos(f);
       width: 1.5rem;
       height: 1.5rem;
       right: .4rem;
-      bottom: 1rem;
+      bottom: 2.2rem;
+      z-index: 1000;
       text-align: center;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
+    }
+
+    @at-root.zmiti-back1 {
+      right: 0;
+      bottom: .7rem;
     }
 
   }
@@ -556,12 +595,12 @@ $color: #b72d2b;
 .zmiti-mask {
   @include pos(a);
   width: 100%;
-  display: none;
   height: 100%;
-  background: rgba(0, 0, 0, .9);
+  background: rgba(0, 0, 0, .7);
+  display: none;
   left: 0;
   top: 0;
-  z-index: 5800;
+  z-index: 15800;
 }
 
 @media all and (min-height:603px) and (min-width:375px) {
